@@ -1,0 +1,235 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: #242424;
+    padding: 0em 1em 1em 1em;
+}
+.login_box {
+    position: absolute;
+    right: 0em;
+    top: 10em;
+    border: 1px solid black;
+    border-radius: 40px;
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+    background: linear-gradient(#202020,#5D4627,#202020, black);
+}
+.greeting {
+    text-indent: 0em;
+    color: #F8F1C7;
+}
+.user_field {
+    display: block;
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-color: lightGrey;
+}
+.login_button{
+    margin-left: 63%;
+    margin-top: 10%;
+   
+}
+.register_link {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10%;
+    color: #F8F1C7
+}
+.register_box {
+    width: 300px;
+    height: 400px;
+    overflow: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 40px;
+    position: absolute;
+    right: 0em;
+    top: 10em;
+    background: linear-gradient(#202020,#5D4627,#202020, black);
+
+}
+.info {
+    color: #F8F1C7;
+    margin: 0.5em;
+    line-height: auto;
+}
+.message_box {
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 0.5em;
+    width: 80%;
+    right: 1.6em;
+    bottom:2em;
+    text-align: center;
+    margin-top: 0.4em;
+    margin-left: 1.2em;
+    
+}
+.message{
+    display: inline-block;
+    width: auto;
+}
+.header > h1, form,a {
+    display: inline-block;
+}
+.add_book_link {
+    position: absolute;
+    right: 8em;
+    top: 0.7em;
+    color:#F8F1C7
+
+}
+.add_book_button {
+    margin-top: 3em;
+    margin-left: 20em;
+}
+.sign_out_button {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+.recents_box {
+    border:1px solid black;
+    margin-top: 5em;
+    margin-left: 1em;
+    width: 40em;
+    background-color: rgba(74,57,32, 0.6);
+    color: #F8F1C7;
+    height: 30em;
+    padding: 1em;
+    overflow: scroll;
+    display: inline-block;
+}
+.review_box {
+    border:1px solid black;
+    margin-top: 5em;
+    margin-left: 1em;
+    width: 20em;
+    background-color: rgba(74,57,32, 0.6);
+    color: #F8F1C7;
+    height: 20em;
+    vertical-align: top;
+    padding: 1em;
+    overflow: scroll;
+    display: inline-block;
+}
+.small {
+    height: 13em;
+}
+.add_book_box {
+    border:1px solid black;
+    margin-top: 5em;
+    margin-left: 1em;
+    width: 40em;
+    background-color: rgba(74,57,32, 0.6);
+    color: #F8F1C7;
+    height: 20em;
+    padding: 1em;
+
+}
+.book_list {
+    background-color: rgba(74,57,32, 0.6);
+    margin-left:3em;
+    margin-top: 1em;
+    overflow: auto;
+    width: 80%;
+    height:80%;    
+}
+.post_date {
+    float: right;
+}
+.link {
+    width: 50em;
+    border: 2px solid black;
+    
+}
+.content {
+    width: 50em;
+    height: 2em;
+}
+.user_post {
+    border: 1px solid black;
+}
+.action_bar {
+    background-color: rgba(74,57,32, 0.9);
+    border-bottom: 2px solid black;
+}
+.green {
+    background: green;
+    background: linear-gradient(white,green, green, green, white);
+}
+.red {
+    background: red;
+    background: linear-gradient(white,red, red, red, white);
+}
+.review {
+    margin-top: 1em;
+    padding: 0.5em;
+    border-top: 2px solid black;
+    overflow: auto;
+}
+.review_info {
+    margin-top: 0.5em;
+}
+.review_title {
+    font-size: 18px;
+}
+.book_link {
+    color: #E1DBD1;
+    font-size: 16px;
+    display: block;
+}
+.name_link {
+    color: #E1DBD1;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.post_link {
+    text-decoration: None;
+    display: block;
+    margin-left: 0.5em;
+    margin-top: 0.3em;
+    font-size:13px;
+}
+.rating {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+.star {
+    background-image: url("../images/star.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+
+}
+.home {
+    right: 18em;
+}
+.like_link{
+    color:#E1DBD1;
+    margin-left: 18em;
+    position: relative;
+    bottom: 0em;
+    right: 0em;
+}
+.likes{
+    display:inline-block;
+    float: right;
+    right: 0em;
+    margin-left: 2em;
+}
+.delete_link {
+    color: #E1DBD1;
+    font-size: 16px;
+}
+

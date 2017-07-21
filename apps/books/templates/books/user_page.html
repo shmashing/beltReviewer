@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BLANK_TITLE</title>
+  <meta name="description" content="BLANK DESCRIPTION">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'users/css/main.css'%}" media="screen" title="no title"  charset="utf-8">
+</head>
+<a href="{% url 'books:add' %}" class='book add_book_link'>Add Book and Review</a>
+<div class='header'>
+  <form action='/logout'>
+    <input type='submit' class='sign_out_button' value='Sign Out'>
+  </form>
+</div>
+<body>
+<h1 class='greeting'>Welcome, {{user.first_name}}!</h1>
+<div class='recents_box'>
+  <p class='review_title'><b>Recent Reviews:</b></p>
+  {% for review in reviews %}
+  <div class='review'>
+    <a href="{% url 'books:bookPage' id=review.book.id %}" class='book_link'>{{review.book.title}}</a>
+    <p class='review_info rating'>Rating:
+      {% for star in review.rating %}
+      <div class='star'>
+      </div>
+      {% endfor %}
+    </p>
+    <p class='review_info'><a href="{% url 'users:user' id=review.user.id %}" class='name_link'>{{review.user.first_name}}</a> says: {{review.content}}</p>
+    <p class='review_info'>{{review.created_at}}</p>
+  </div>
+  {% endfor %}
+</div>
+<div class='review_box'>
+  <p><b>Other Books with Reviews:</b></p>
+  <div class='book_list'>
+    {% for book in books %}
+      <a href="{% url 'books:bookPage' id=book.id %}" class='book_link post_link'>{{book.title}}</a>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>

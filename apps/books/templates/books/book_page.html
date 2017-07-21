@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BLANK_TITLE</title>
+  <meta name="description" content="BLANK DESCRIPTION">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'users/css/main.css'%}" media="screen" title="no title"  charset="utf-8">
+</head>
+<a href="{% url 'books:home' %}" class='book add_book_link'>Home</a>
+<div class='header'>
+  <form action='/logout'>
+    <input type='submit' class='sign_out_button' value='Sign Out'>
+  </form>
+</div>
+<body>
+<h1 class='greeting'>{{ book.title }}</h1>
+<h3 class='greeting'>by {{ book.author.name }} </h3>
+<div class='recents_box'>
+  <p><b>Reviews:</b></p>
+  <p>Average Rating:
+      {% for star in avg_rating %}
+      <div class='star'>
+      </div>
+      {% endfor %}
+  </p>
+  {% for review in reviews %}
+  <div class='review'>
+    <p class='review_info rating'>Rating:
+      {% for star in review.rating %}
+      <div class='star'>
+      </div>
+      {% endfor %}
+    <p class='review_info'><a href="{% url 'users:user' id=review.user.id %}" class='name_link'>{{review.user.first_name}}</a> says: {{review.content}}</p>
+    <p class='review_info'>{{review.created_at}}</p>
+
+    {% if user.id == review.user.id %}
+      <p>
+      <a href="{% url 'books:removeReview' book_id=book.id rev_id=review.id %}" class='delete_link'>Delete this review</a>
+      </p>
+    {% endif %}  
+
+    {% if user.id in review.getLikes %}
+      <p class='likes'>You found this helpful</p>
+    {% else %}
+      <a href="{% url 'books:addLike' book_id=book.id rev_id=review.id %}" class='like_link'>Was this helpful?</a>
+    {% endif %}
+
+      {% if review.like_set.count == 1 %}
+        <p class='likes'>{{ review.like_set.count }} person found this helpful</p>
+      {% else %}
+        <p class='likes'>{{ review.like_set.count }} people found this helpful</p>
+      {% endif %}      
+  </div>
+  {% endfor %}
+</div>
+<div class='review_box small'>
+<form action="{% url 'books:addReview' id=book.id %}" method='post'>
+{% csrf_token %}
+  <p class='info'>Add a review: </p>
+  <textarea rows='6' cols='50' name='review'></textarea>
+  <select name='rating'>
+    <option value='*'>1 star</option>
+    <option value='**'>2 star</option>
+    <option value='***'>3 star</option>
+    <option value='****'>4 star</option>
+    <option value='*****'>5 star</option>
+  </select>
+  <p></p>
+  <input type='submit' value='Add Review'>
+</form>
+{% if messages %}
+  {% for message in messages %}
+    <div class='message_box red'>
+      <p class='message'> {{ message }} </p>
+    </div>
+  {% endfor %}
+{% endif %}
+</div>
+</body>
+</html>

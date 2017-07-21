@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BLANK_TITLE</title>
+  <meta name="description" content="BLANK DESCRIPTION">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'users/css/main.css'%}" media="screen" title="no title"  charset="utf-8">
+</head>
+<a href="{% url 'books:home' %}" class='book add_book_link'>Home</a>
+<div class='header'>
+  <form action="{% url 'users:logout' %}">
+    <input type='submit' class='sign_out_button' value='Sign Out'>
+  </form>
+</div>
+
+<body>
+<h1 class='greeting'>Add a New Book Title and Review:</h1>
+<form action="{% url 'books:addBook' %}" method='post'>
+{% csrf_token %}
+<div class='add_book_box'>
+  <table class='add_book_form'>
+    <tr>
+      <td><p class='info'>Book Title:</p></td>
+      <td><input type='text' name='book_title'></td>
+    </tr>
+    <tr>
+      <td><p class='info'>Author:</p></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        Choose from the list:
+        <select name='author_name_list'>
+          <option></option>
+          {% for author in authors %}   
+            <option>{{ author.name }}</option>
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <td></td>
+      <td>
+        Add a New Author:
+        <input type='text' name='author_name'>
+      </td>
+    </tr>
+    <tr>
+      <td><p class='info'>Review:</p></td>
+      <td><textarea rows='6' cols='60' name='review' ></textarea>
+    </tr>
+    <tr>
+      <td><p class='info'>Rating: </p></td>
+      <td><select name='rating'>
+        <option value='*'>1 star</option>
+        <option value='**'>2 stars</option>
+        <option value='***'>3 stars</option>
+        <option value='****'>4 stars</option>
+        <option value='*****'>5 stars</option>
+      </select></td>
+    </tr>
+  </table>
+
+  <input type='submit' value='Add Book and Author' class='add_book_button'>
+</div>
+{% if messages %}
+  {% for message in messages %}
+    <div class='message_box red'>
+      <p class='message'> {{ message }} </p>
+    </div>
+  {% endfor %}
+{% endif %}
+</form>
+
+</body>
+</html>
